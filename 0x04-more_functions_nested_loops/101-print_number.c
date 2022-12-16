@@ -8,29 +8,30 @@
 
 void print_number(int n)
 {
-	unsigned int k, l, count;
-
-	if (n < 0)
+	if (n == 0)
+		_putchar('0');
+	else if (n < 0)
 	{
-		_putchar(45);
-		k = n * -1;
+		_putchar('-');
+		print_integer(n * -1);
 	}
 	else
-	{
-		k = n;
-	}
+		print_integer(n);
+}
 
-	l = k;
-	count = 1;
+/**
+ * print_integer - prints n
+ * @m: an input unsigned integer
+ * Return: Nothing
+ */
 
-	while (l > 9)
-	{
-		l /= 10;
-		count *= 10;
-	}
+void print_integer(int m)
+{
+	int i = 1000000000;
 
-	for (; count >= 1; count /= 10)
-	{
-		_putchar(((k / count) % 10) + 48);
-	}
+	for (; i >= 1; i /= 10)
+		if (m / i != 0)
+		{
+			_putchar((m / i) % 10 + '0');
+		}
 }
